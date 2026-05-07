@@ -10,7 +10,7 @@
     "id": "ugrt-ui",
     "title": "Rover UI Panel",
     "description": "Custom casing and CAD integration for the UGRT rover.",
-    "thumbnail": "images/ugrt-thumb.jpg",
+    "thumbnail": "images/ugrt-ui-thumb.jpg",
     "link": "media/ugrt-ui-collage.html"
   },
   {
@@ -19,5 +19,12 @@
     "description": "First-year engineering design project.",
     "thumbnail": "images/teddy-thumb.jpg",
     "link": "media/teddy-collage.html"
+  },
+  {
+    "id": "ugrt-dexterity-panel",
+    "title": "Rover Dexterity Panel",
+    "description": "-------------------.",
+    "thumbnail": "images/ugrt-dexterity-thumb.jpg",
+    "link": "media/ugrt-dexterity-collage.html"
   }
 ]

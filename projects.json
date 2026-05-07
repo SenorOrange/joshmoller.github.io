@@ -1,0 +1,23 @@
+[
+  {
+    "id": "hank-robot",
+    "title": "HANK: Jumping Robot",
+    "description": "Custom knee transmission utilizing dog clutches and stepper motors.",
+    "thumbnail": "images/hank-thumb.jpg",
+    "link": "media/hank-collage.html"
+  },
+  {
+    "id": "ugrt-ui",
+    "title": "Rover UI Panel",
+    "description": "Custom casing and CAD integration for the UGRT rover.",
+    "thumbnail": "images/ugrt-thumb.jpg",
+    "link": "media/ugrt-ui-collage.html"
+  },
+  {
+    "id": "engg1100",
+    "title": "Teddy Bear Wheelchair",
+    "description": "First-year engineering design project.",
+    "thumbnail": "images/teddy-thumb.jpg",
+    "link": "media/teddy-collage.html"
+  }
+]

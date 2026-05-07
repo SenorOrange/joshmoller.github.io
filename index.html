@@ -148,27 +148,26 @@
 			<script>
 				document.addEventListener('DOMContentLoaded', () => {
 					
-					// 1. Fetch the data from your separate JSON file
 					fetch('projects.json')
 						.then(response => response.json())
 						.then(projects => {
 							const grid = document.getElementById('portfolio-grid');
 							
-							// 2. Apply the clean CSS Grid styling
 							grid.className = ''; 
-							grid.style.display = 'grid';
-							grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+							
+							// CHANGED: We are using Flexbox now instead of Grid
+							grid.style.display = 'flex';
+							grid.style.flexWrap = 'wrap';
+							grid.style.justifyContent = 'center'; // This is the magic line that centers the bottom row!
 							grid.style.gap = '30px';
-							grid.style.alignItems = 'stretch';
 							
 							let html = '';
 							
-							// 3. Build the cards dynamically
 							projects.forEach(project => {
 								html += `
-									<article class="item" style="background: #fff; margin: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-										<a href="${project.link}" target="_blank" class="image fit" style="margin: 0; background-color: #2b2b2b; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-											<img src="${project.thumbnail}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span style=\\'color:#666; font-size:0.9em;\\'>Image Placeholder</span>';" />
+									<article class="item" style="flex: 0 1 320px; background: #fff; margin: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+										<a href="${project.link}" target="_blank" class="image fit" style="margin: 0; background-color: #2b2b2b; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden; text-decoration: none;">
+											<img src="${project.thumbnail}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.outerHTML='<span style=\\'color:#888; font-size:1.2em;\\'>Image Placeholder</span>';" />
 										</a>
 										<header style="padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start;">
 											<h3 style="margin: 0 0 0.5em 0; font-size: 1.2em; color: #333;">${project.title}</h3>

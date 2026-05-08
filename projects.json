@@ -1,8 +1,8 @@
 [
   {
     "id": "hank-robot",
-    "title": "HANK: Jumping Robot",
-    "description": "Custom knee transmission utilizing dog clutches and stepper motors.",
+    "title": "HΛNK: Robot Assistant",
+    "description": "Designed to help with work, uses custom knee transmission utilizing dog clutches and stepper motors to jump.",
     "thumbnail": "images/hank-thumb.jpg",
     "link": "media/hank-collage.html"
   },
@@ -23,7 +23,7 @@
   {
     "id": "ugrt-dexterity-panel",
     "title": "Rover Dexterity Panel",
-    "description": ".",
+    "description": "Panel consisting of multiple modules to test the UGRT arm.",
     "thumbnail": "images/ugrt-dexterity-thumb.jpg",
     "link": "media/ugrt-dexterity-collage.html"
   }

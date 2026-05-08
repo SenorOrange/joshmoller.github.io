@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Rover Dexterity Panel | Media</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!-- This links back one folder level to your main CSS -->
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <style>
+            /* Custom styles just for the collage grid */
+            body { background: #fff; color: #444; padding: 2em; text-align: center; }
+            .collage-container { max-width: 1000px; margin: 0 auto; }
+            .media-grid { 
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap: 20px; 
+                margin-top: 2em;
+            }
+            .media-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+            .back-btn { margin-bottom: 2em; display: inline-block; }
+        </style>
+    </head>
+    <body>
+
+        <div class="collage-container">
+            <!-- Header Section -->
+            <header>
+                <h2>Rover Dexterity Panel</h2>
+                <p>Panel consisting of multiple modules to test the UGRT arm.</p>
+            </header>
+
+            <!-- Media Grid -->
+            <div class="media-grid">
+                <!-- Replace these with your actual image paths -->
+                <img src="../images/hank-cad-1.jpg" alt="Gripper Tester CAD Model 1" />
+                <img src="../images/hank-cad-2.jpg" alt="Wrist Tester CAD Model 2" />
+                <img src="../images/hank-build-1.jpg" alt="Gripper Tester Handles CAD" />
+                <img src="../images/hank-action.jpg" alt="Testing in action" />
+            </div>
+            
+            <!-- Optional: Video block if you have one -->
+            <!--
+            <div style="margin-top: 2em;">
+                <video width="100%" controls>
+                  <source src="../images/hank-jump.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            -->
+        </div>
+
+    </body>
+</html>

@@ -14,6 +14,13 @@
     "link": "media/ugrt-ui-collage.html"
   },
   {
+    "id": "ugrt-dexterity-panel",
+    "title": "Rover Dexterity Panel",
+    "description": "Panel consisting of multiple modules to test the UGRT arm.",
+    "thumbnail": "images/ugrt-dexterity-thumb.jpg",
+    "link": "media/ugrt-dexterity-collage.html"
+  },
+  {
     "id": "engg1100",
     "title": "Teddy Bear Wheelchair",
     "description": "First-year engineering design project.",
@@ -21,10 +28,11 @@
     "link": "media/teddy-collage.html"
   },
   {
-    "id": "ugrt-dexterity-panel",
-    "title": "Rover Dexterity Panel",
-    "description": "Panel consisting of multiple modules to test the UGRT arm.",
-    "thumbnail": "images/ugrt-dexterity-thumb.jpg",
-    "link": "media/ugrt-dexterity-collage.html"
+    "id": "gr12-capstone",
+    "title": "Self Watering Arm",
+    "description": "Grade 12 attempt at a watering robotic arm.",
+    "thumbnail": "images/gr12-cap-thumb.jpg",
+    "link": "media/gr12-cap-collage.html"
   }
 ]
+

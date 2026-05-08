@@ -49,5 +49,26 @@
             -->
         </div>
 
+        <div id="image-overlay" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
+            <img id="enlarged-image" src="" style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
+        </div>
+
+        <script src="../assets/js/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            // When any image in the media-grid is clicked
+            $('.media-grid img').css('cursor', 'zoom-in').on('click', function() {
+                var src = $(this).attr('src');
+                $('#enlarged-image').attr('src', src);
+                $('#image-overlay').css('display', 'flex');
+            });
+
+            // When the overlay is clicked, hide it
+            $('#image-overlay').on('click', function() {
+                $(this).hide();
+            });
+        });
+        </script>
+        
     </body>
 </html>

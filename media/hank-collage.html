@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <!-- This links back one folder level to your main CSS -->
         <link rel="stylesheet" href="../assets/css/main.css" />
+
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
         <style>
             /* Custom styles just for the collage grid */
             body { background: #fff; color: #444; padding: 2em; text-align: center; }
@@ -28,6 +31,17 @@
                 <h2>HΛNK: Robot Assistant</h2>
                 <p>Designed to help with work, uses custom knee transmission utilizing dog clutches and stepper motors to jump.</p>
             </header>
+            
+            <div style="margin-top: 2em; margin-bottom: 2em;">
+                <model-viewer 
+                    src="../images/Projects/HANK/HΛNKKneeAssem.glb" 
+                    alt="A 3D model of the HANK assembly" 
+                    auto-rotate 
+                    camera-controls 
+                    shadow-intensity="1"
+                    style="width: 100%; height: 500px; background-color: #f4f4f4; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </model-viewer>
+            </div>
 
             <!-- Media Grid -->
             <div class="media-grid">

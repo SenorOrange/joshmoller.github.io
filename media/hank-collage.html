@@ -4,7 +4,6 @@
         <title>HΛNK: Robot Assistant | Media</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <!-- This links back one folder level to your main CSS -->
         <link rel="stylesheet" href="../assets/css/main.css" />
 
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
@@ -21,12 +20,39 @@
             }
             .media-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
             .back-btn { margin-bottom: 2em; display: inline-block; }
+
+            /* --- NEW: BUTTON STYLES --- */
+            .model-controls {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 15px;
+                flex-wrap: wrap;
+            }
+            .viewer-btn {
+                padding: 10px 20px;
+                border: 2px solid #ddd;
+                border-radius: 6px;
+                background: #fff;
+                color: #555;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            .viewer-btn:hover {
+                border-color: #888;
+                background: #f9f9f9;
+            }
+            .viewer-btn.active {
+                background: #444;
+                color: #fff;
+                border-color: #444;
+            }
         </style>
     </head>
     <body>
 
         <div class="collage-container">
-            <!-- Header Section -->
             <header>
                 <h2>HΛNK: Robot Assistant</h2>
                 <p>Designed to help with work, uses custom knee transmission utilizing dog clutches and stepper motors to jump.</p>
@@ -34,6 +60,7 @@
             
             <div style="margin-top: 2em; margin-bottom: 2em;">
                 <model-viewer 
+                    id="hank-viewer"
                     src="../images/Projects/Hank/hankKneeAssem.glb" 
                     alt="A 3D model of the HANK assembly" 
                     auto-rotate 
@@ -41,27 +68,22 @@
                     shadow-intensity="1"
                     style="width: 100%; height: 500px; background-color: #f4f4f4; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 </model-viewer>
+
+                <div class="model-controls">
+                    <button class="viewer-btn active" data-model="hankKneeAssem.glb">Full Assembly</button>
+                    <button class="viewer-btn" data-model="hankKneeTransparent.glb">Transparent Shell</button>
+                    <button class="viewer-btn" data-model="hankKneeInternals.glb">Internals Only</button>
+                </div>
             </div>
 
-            <!-- Media Grid -->
             <div class="media-grid">
-                <!-- Replace these with your actual image paths -->
                 <img src="../images/Projects/Hank/hankKneeSchematicV1.jpg" alt="Hank CAD Model 1" />
                 <img src="../images/hank-cad-2.jpg" alt="Hank CAD Model 2" />
                 <img src="../images/hank-build-1.jpg" alt="Hank Physical Build" />
                 <img src="../images/hank-action.jpg" alt="Hank in Action" />
             </div>
             
-            <!-- Optional: Video block if you have one -->
-            <!--
-            <div style="margin-top: 2em;">
-                <video width="100%" controls>
-                  <source src="../images/hank-jump.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
             </div>
-            -->
-        </div>
         
         <div id="image-overlay" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
             <img id="enlarged-image" src="" style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
@@ -80,6 +102,22 @@
             // When the overlay is clicked, hide it
             $('#image-overlay').on('click', function() {
                 $(this).hide();
+            });
+
+            // --- NEW 3D VIEWER BUTTON CODE ---
+            $('.viewer-btn').on('click', function() {
+                // Change button styling
+                $('.viewer-btn').removeClass('active');
+                $(this).addClass('active');
+
+                // Get the new filename
+                var newModelFile = $(this).attr('data-model');
+                
+                // Define the folder path
+                var folderPath = "../images/Projects/Hank/";
+                
+                // Swap the model!
+                $('#hank-viewer').attr('src', folderPath + newModelFile);
             });
         });
         </script>

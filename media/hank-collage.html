@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +140,6 @@
             transition: color 0.3s;
             display: block;
             border-bottom: none;
-            /* Override HTML5UP link underline */
         }
 
         .timeline-nav a:hover {
@@ -169,6 +167,26 @@
             background: var(--accent-color);
             border-color: var(--accent-color);
             transform: scale(1.2);
+        }
+
+        /* Date Styling in Timeline */
+        .nav-date {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 2px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-title {
+            display: block;
+        }
+
+        .timeline-nav a.active .nav-date {
+            color: var(--accent-color);
         }
 
         /* Right Column: Main Content (75%) */
@@ -366,18 +384,53 @@
         <!-- Sticky Timeline -->
         <aside class="timeline-wrapper">
             <ul class="timeline-nav">
-                <li><a href="#post-transmission" class="nav-link active">1. Transmission Concept</a></li>
-                <li><a href="#post-clutch-design" class="nav-link">2. Dog Clutch Iteration</a></li>
-                <li><a href="#post-integration" class="nav-link">3. Hardware Integration</a></li>
+                <li>
+                    <a href="#post-ideation" class="nav-link active">
+                        <span class="nav-date">Early May</span>
+                        <span class="nav-title">Airport Concept Sketches</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#post-transmission" class="nav-link">
+                        <span class="nav-date">May 14, 2026</span>
+                        <span class="nav-title">Transmission Concept</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#post-clutch-design" class="nav-link">
+                        <span class="nav-date">June 22, 2026</span>
+                        <span class="nav-title">Dog Clutch Iteration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#post-integration" class="nav-link">
+                        <span class="nav-date">August 05, 2026</span>
+                        <span class="nav-title">Hardware Integration</span>
+                    </a>
+                </li>
             </ul>
         </aside>
 
         <!-- Main Content Zone -->
         <main class="content-zone">
-
+            <!-- Log Post 0: The Napkin Sketch -->
+            <section id="post-ideation" class="log-post">
+                <div class="post-date">The Blueprint | Ideation Phase</div>
+                <h2>Original Concept Sketches</h2>
+                <p>Every complex project starts on paper. Before opening CAD, I mapped out the core design of my idea of a personal robot at the airport. The primary goal was visualizing how to package a high-torque transmission, a heavy-duty spring, and the necessary sensors into a compact knee joint to make the robot jump.</p>
+                
+                <!-- Replace with your scanned sketch image -->
+                <img src="../images/Projects/Hank/hank-airport-sketches-1.jpg" alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
+                <img src="../images/Projects/Hank/hank-airport-sketches-2.jpg" alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />                
+                
+                <div class="callout solution">
+                    <h4>The Core Idea</h4>
+                    <p>These initial drawings locked in the idea of what this project will look like long term and gave me a strong base to work off of.</p>
+                </div>
+            </section>
             <!-- Log Post 1: 3D Model -->
             <section id="post-transmission" class="log-post">
-                <div class="post-date">Mechanical Core</div>
+                <div class="post-date">May 14, 2026 | Mechanical Core</div>
                 <h2>Knee Transmission Assembly</h2>
                 <p>The core capability of the bipedal design requires an instantaneous release of kinetic energy. To
                     achieve this, I designed a custom dog-clutch transmission that allows a high-torque stepper motor to
@@ -399,7 +452,7 @@
 
             <!-- Log Post 2: CAD Iteration -->
             <section id="post-clutch-design" class="log-post">
-                <div class="post-date">Iterative Design</div>
+                <div class="post-date">June 22, 2026 | Iterative Design</div>
                 <h2>Dog Clutch Shear Analysis</h2>
                 <p>During initial load modeling, translating the conceptual mechanics into printable FDM parts posed
                     several clearance and tolerance challenges, specifically surrounding the engagement teeth of the
@@ -427,7 +480,7 @@
 
             <!-- Log Post 3: Physical Build & Code -->
             <section id="post-integration" class="log-post">
-                <div class="post-date">Assembly & Embedded Control</div>
+                <div class="post-date">August 05, 2026 | Assembly & Embedded Control</div>
                 <h2>Physical Integration & SPI Comm.</h2>
                 <p>With the mechanical components finalized and printed, the transmission was integrated into the
                     primary chassis. To control the system and prepare for balancing, an ESP32 microcontroller was

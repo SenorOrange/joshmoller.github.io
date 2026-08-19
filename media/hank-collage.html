@@ -1,131 +1,524 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>HΛNK: Robot Assistant | Media</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="../assets/css/main.css" />
+<!DOCTYPE html>
+<html lang="en">
 
-        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HΛNK Engineering Log | Joshua Moller</title>
 
-        <style>
-            /* Custom styles just for the collage grid */
-            body { background: #fff; color: #444; padding: 2em; text-align: center; }
-            .collage-container { max-width: 1000px; margin: 0 auto; }
-            .media-grid { 
-                display: grid; 
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-                gap: 20px; 
-                margin-top: 2em;
+    <!-- Main Template CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css" />
+
+    <!-- 3D Model Viewer Script -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <style>
+        /* --- GLOBAL & LOG LAYOUT STYLES --- */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-main: #444;
+            --text-light: #666;
+            --accent-color: #2b2b2b;
+            --border-color: #e0e0e0;
+            --problem-bg: #fff0f0;
+            --problem-border: #ff6b6b;
+            --solution-bg: #f0fdf4;
+            --solution-border: #4ade80;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .media-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1.5em 0;
+            cursor: zoom-in;
+            display: block;
+        }
+
+        /* --- 1. EXECUTIVE HERO SECTION --- */
+        .hero {
+            background: #fff;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            line-height: 1.2;
+        }
+
+        .hero-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-summary {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 0;
+        }
+
+        .tech-stack li {
+            background: var(--bg-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- 2. INTERACTIVE TIMELINE LAYOUT --- */
+        .log-layout {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        /* Left Column: Sticky Timeline (25%) */
+        .timeline-wrapper {
+            width: 25%;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .timeline-nav {
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-nav::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-nav li {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            display: block;
+            border-bottom: none;
+            /* Override HTML5UP link underline */
+        }
+
+        .timeline-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .timeline-nav a::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .timeline-nav a.active {
+            color: var(--accent-color);
+        }
+
+        .timeline-nav a.active::before {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Right Column: Main Content (75%) */
+        .content-zone {
+            width: 75%;
+            text-align: left;
+        }
+
+        .log-post {
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 2rem;
+        }
+
+        .log-post:last-child {
+            border-bottom: none;
+        }
+
+        .post-date {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .log-post h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .log-post p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Distinct Visual Callouts */
+        .callout {
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+            border-left: 4px solid;
+        }
+
+        .callout h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .callout.problem {
+            background-color: var(--problem-bg);
+            border-color: var(--problem-border);
+        }
+
+        .callout.problem h4 {
+            color: #cc0000;
+        }
+
+        .callout.solution {
+            background-color: var(--solution-bg);
+            border-color: var(--solution-border);
+        }
+
+        .callout.solution h4 {
+            color: #166534;
+        }
+
+        /* Code Snippet Block */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+
+        /* --- 3. VIEWER BUTTON STYLES --- */
+        .model-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .viewer-btn {
+            padding: 12px 24px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #fff;
+            color: #222 !important;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .viewer-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .viewer-btn.active {
+            background: #2b2b2b;
+            color: #ffffff !important;
+            border-color: #2b2b2b;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
             }
-            .media-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-            .back-btn { margin-bottom: 2em; display: inline-block; }
 
-            /* --- NEW: BUTTON STYLES --- */
-            .model-controls {
+            .log-layout {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .timeline-wrapper {
+                width: 100%;
+                position: static;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-nav {
                 display: flex;
-                justify-content: center;
-                gap: 15px;
-                margin-top: 20px;
-                flex-wrap: wrap;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                padding-left: 0;
             }
-            .viewer-btn {
-                padding: 12px 24px;       
-                border: 2px solid #333;   
-                border-radius: 8px;
-                background: #fff;
-                color: #222 !important;   /* <--- Force text to be dark grey */
-                font-size: 1.1em;         
-                font-weight: 700;         
-                cursor: pointer;
-                transition: all 0.2s ease;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
-            }
-            .viewer-btn:hover {
-                background: #f0f0f0;      
-                transform: translateY(-2px); 
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            }
-            .viewer-btn.active {
-                background: #2b2b2b;      
-                color: #ffffff !important; /* <--- Force active text to be pure white */
-                border-color: #2b2b2b;
-                box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); 
-                transform: translateY(0); 
-            }
-        </style>
-    </head>
-    <body>
 
-        <div class="collage-container">
-            <header>
-                <h2>HΛNK: Robot Assistant</h2>
-                <p>Designed to help with work, uses custom knee transmission utilizing dog clutches and stepper motors to jump.</p>
-            </header>
-            
-            <div style="margin-top: 2em; margin-bottom: 2em;">
-                <model-viewer 
-                    id="hank-viewer"
-                    src="../images/Projects/Hank/hankKneeAssem.glb" 
-                    alt="A 3D model of the HANK assembly" 
-                    auto-rotate 
-                    camera-controls 
-                    shadow-intensity="1"
-                    style="width: 100%; height: 500px; background-color: #f4f4f4; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                </model-viewer>
+            .timeline-nav::before {
+                display: none;
+            }
 
-                <div class="model-controls">
-                    <button class="viewer-btn active" data-model="hankKneeAssem.glb">Full Assembly</button>
-                    <button class="viewer-btn" data-model="hankKneeTransparent.glb">Transparent Shell</button>
-                    <button class="viewer-btn" data-model="hankKneeInternals.glb">Internals Only</button>
-                </div>
-            </div>
+            .timeline-nav li {
+                flex: 0 0 auto;
+                margin-right: 1.5rem;
+                margin-bottom: 0;
+            }
 
-            <div class="media-grid">
-                <img src="../images/Projects/Hank/hankKneeSchematicV1.jpg" alt="Hank CAD Model 1" />
-                <img src="../images/Projects/Hank/hankKneeModelV1.jpg" alt="Hank CAD Model 2" />
-                <img src="../images/hank-build-1.jpg" alt="Hank Physical Build" />
-                <img src="../images/hank-action.jpg" alt="Hank in Action" />
+            .timeline-nav a::before {
+                display: none;
+            }
+
+            .content-zone {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Executive Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>HΛNK: Robot Assistant</h1>
+                <span class="hero-role">Personal Robotics Project</span>
+                <p class="hero-summary">Designed to assist with work, this project features a custom knee transmission
+                    utilizing dog clutches and stepper motors to jump. This log tracks the mechanical design, failure
+                    analysis, and control integration.</p>
+                <ul class="tech-stack">
+                    <li>SolidWorks</li>
+                    <li>C / C++</li>
+                    <li>ESP32</li>
+                    <li>SPI Comm.</li>
+                    <li>FDM Prototyping</li>
+                </ul>
             </div>
-            
+            <div class="hero-media">
+                <img src="../images/hank-action.jpg" alt="HANK Prototype in action" class="media-image"
+                    style="margin: 0; cursor: default;">
             </div>
-        
-        <div id="image-overlay" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
-            <img id="enlarged-image" src="" style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
         </div>
+    </header>
 
-        <script src="../assets/js/jquery.min.js"></script>
-        <script>
-        $(document).ready(function() {
-            // When any image in the media-grid is clicked
-            $('.media-grid img').css('cursor', 'zoom-in').on('click', function() {
+    <!-- 2. Interactive Timeline Layout -->
+    <div class="log-layout">
+
+        <!-- Sticky Timeline -->
+        <aside class="timeline-wrapper">
+            <ul class="timeline-nav">
+                <li><a href="#post-transmission" class="nav-link active">1. Transmission Concept</a></li>
+                <li><a href="#post-clutch-design" class="nav-link">2. Dog Clutch Iteration</a></li>
+                <li><a href="#post-integration" class="nav-link">3. Hardware Integration</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Zone -->
+        <main class="content-zone">
+
+            <!-- Log Post 1: 3D Model -->
+            <section id="post-transmission" class="log-post">
+                <div class="post-date">Mechanical Core</div>
+                <h2>Knee Transmission Assembly</h2>
+                <p>The core capability of the bipedal design requires an instantaneous release of kinetic energy. To
+                    achieve this, I designed a custom dog-clutch transmission that allows a high-torque stepper motor to
+                    gradually compress a heavy-duty spring, before decoupling instantly to initiate a jump.</p>
+
+                <div style="margin-top: 2em; margin-bottom: 2em;">
+                    <model-viewer id="hank-viewer" src="../images/Projects/Hank/hankKneeAssem.glb"
+                        alt="A 3D model of the HANK assembly" auto-rotate camera-controls shadow-intensity="1"
+                        style="width: 100%; height: 500px; background-color: #f4f4f4; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </model-viewer>
+
+                    <div class="model-controls">
+                        <button class="viewer-btn active" data-model="hankKneeAssem.glb">Full Assembly</button>
+                        <button class="viewer-btn" data-model="hankKneeTransparent.glb">Transparent Shell</button>
+                        <button class="viewer-btn" data-model="hankKneeInternals.glb">Internals Only</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Log Post 2: CAD Iteration -->
+            <section id="post-clutch-design" class="log-post">
+                <div class="post-date">Iterative Design</div>
+                <h2>Dog Clutch Shear Analysis</h2>
+                <p>During initial load modeling, translating the conceptual mechanics into printable FDM parts posed
+                    several clearance and tolerance challenges, specifically surrounding the engagement teeth of the
+                    main clutch.</p>
+
+                <img src="../images/Projects/Hank/hankKneeSchematicV1.jpg" alt="Hank CAD Model Schematic"
+                    class="media-image" />
+                <img src="../images/Projects/Hank/hankKneeModelV1.jpg" alt="Hank CAD Model Rendering"
+                    class="media-image" />
+
+                <div class="callout problem">
+                    <h4>The Problem</h4>
+                    <p>Early iterations of the 3D-printed transmission suffered from shear failure on the engagement
+                        teeth due to the sudden application of torque when the loaded spring was released. The interior
+                        corners created heavy stress concentrations.</p>
+                </div>
+
+                <div class="callout solution">
+                    <h4>The Iteration</h4>
+                    <p>I returned to SolidWorks to redesign the engagement geometry, adding specific filleting to
+                        distribute stress across the structural layers of the 3D print, optimizing the design
+                        specifically for the anisotropic properties of FDM manufacturing.</p>
+                </div>
+            </section>
+
+            <!-- Log Post 3: Physical Build & Code -->
+            <section id="post-integration" class="log-post">
+                <div class="post-date">Assembly & Embedded Control</div>
+                <h2>Physical Integration & SPI Comm.</h2>
+                <p>With the mechanical components finalized and printed, the transmission was integrated into the
+                    primary chassis. To control the system and prepare for balancing, an ESP32 microcontroller was
+                    configured to interface with an ADXL345 accelerometer via SPI protocols.</p>
+
+                <img src="../images/hank-build-1.jpg" alt="Hank Physical Build Process" class="media-image" />
+
+                <pre><code>// ESP32 SPI configuration snippet for ADXL345
+#include &lt;SPI.h&gt;
+
+const int CS_PIN = 5;
+
+void setup() {
+  Serial.begin(115200);
+  SPI.begin();
+  pinMode(CS_PIN, OUTPUT);
+  digitalWrite(CS_PIN, HIGH);
+  
+  // Configure ADXL345 for SPI 4-wire mode
+  writeRegister(0x31, 0x0B); 
+  // Set to measurement mode
+  writeRegister(0x2D, 0x08); 
+}</code></pre>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Image Zoom Overlay -->
+    <div id="image-overlay"
+        style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
+        <img id="enlarged-image" src=""
+            style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // --- IMAGE ZOOM INTERACTION ---
+            $('.media-image').on('click', function () {
                 var src = $(this).attr('src');
                 $('#enlarged-image').attr('src', src);
                 $('#image-overlay').css('display', 'flex');
             });
 
-            // When the overlay is clicked, hide it
-            $('#image-overlay').on('click', function() {
+            $('#image-overlay').on('click', function () {
                 $(this).hide();
             });
 
-            // --- NEW 3D VIEWER BUTTON CODE ---
-            $('.viewer-btn').on('click', function() {
-                // Change button styling
+            // --- 3D VIEWER BUTTON INTERACTION ---
+            $('.viewer-btn').on('click', function () {
                 $('.viewer-btn').removeClass('active');
                 $(this).addClass('active');
 
-                // Get the new filename
                 var newModelFile = $(this).attr('data-model');
-                
-                // Define the folder path
                 var folderPath = "../images/Projects/Hank/";
-                
-                // Swap the model!
+
                 $('#hank-viewer').attr('src', folderPath + newModelFile);
             });
+
+            // --- SCROLL SPY FOR TIMELINE ---
+            const sections = document.querySelectorAll('.log-post');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
         });
-        </script>
-        
-    </body>
+    </script>
+
+</body>
+
 </html>

@@ -435,6 +435,7 @@
                         me a strong base to work off of.</p>
                 </div>
             </section>
+
             <!-- Log Post 1: 3D Model -->
             <section id="post-transmission" class="log-post">
                 <div class="post-date">May 14, 2026 | Mechanical Core</div>
@@ -489,18 +490,19 @@
             <section id="post-v1-breakdown" class="log-post">
                 <div class="post-date">September 05, 2026 | V1 Revisions</div>
                 <h2>Knee Prototype Analysis & Tolerance Adjustments</h2>
+
                 <div class="callout problem">
-                    <h4>The Problem</h4>
-                    <p>Early iterations of the 3D-printed transmission suffered from shear failure on the engagement
-                        teeth due to the sudden application of torque when the loaded spring was released. The interior
-                        corners created heavy stress concentrations.</p>
+                    <h4>Hardware Audit: FDM Shrinkage</h4>
+                    <p>Following the initial print of the V1 knee assembly, physical testing revealed that FDM shrinkage
+                        caused tolerance stacking issues with the bearing press-fits, and the active torque required
+                        significantly thicker load-bearing walls.</p>
                 </div>
 
                 <div class="callout solution">
-                    <h4>The Iteration</h4>
-                    <p>I returned to SolidWorks to redesign the engagement geometry, adding specific filleting to
-                        distribute stress across the structural layers of the 3D print, optimizing the design
-                        specifically for the anisotropic properties of FDM manufacturing.</p>
+                    <h4>Design for Assembly (DFA) Improvements</h4>
+                    <p>Beyond simple tolerance tweaks, shifting the servo mount 2mm and realigning the screw holes on
+                        the donut component were critical DFA changes to allow actual tools to reach the hardware during
+                        physical assembly.</p>
                 </div>
 
                 <pre style="border-left: 4px solid #f59e0b;"><span style="color: #888;">// FILE: v2_hardware_revision_notes.txt
@@ -520,8 +522,6 @@
                 <img src="../images/hank-v1-measuring.jpg" alt="Parts being measured" class="media-image" />
                 <img src="../images/hank-v1-vs-v2.jpg" alt="Version Comparison" class="media-image" />
 
-
-
             </section>
 
         </main>
@@ -534,8 +534,8 @@
             style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
     </div>
 
-    <!-- Scripts -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <!-- Scripts: Swapped local jQuery for a CDN to guarantee it runs -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function () {
             // --- IMAGE ZOOM INTERACTION ---

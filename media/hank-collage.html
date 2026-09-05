@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -403,9 +404,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#post-integration" class="nav-link">
-                        <span class="nav-date">August 05, 2026</span>
-                        <span class="nav-title">Hardware Integration</span>
+                    <a href="#post-v1-breakdown" class="nav-link">
+                        <span class="nav-date">September 05, 2026</span>
+                        <span class="nav-title">Knee Prototype Analysis & Tolerance Adjustments</span>
                     </a>
                 </li>
             </ul>
@@ -417,15 +418,21 @@
             <section id="post-ideation" class="log-post">
                 <div class="post-date">The Blueprint | Ideation Phase</div>
                 <h2>Original Concept Sketches</h2>
-                <p>Every complex project starts on paper. Before opening CAD, I mapped out the core design of my idea of a personal robot at the airport. The primary goal was visualizing how to package a high-torque transmission, a heavy-duty spring, and the necessary sensors into a compact knee joint to make the robot jump.</p>
-                
+                <p>Every complex project starts on paper. Before opening CAD, I mapped out the core design of my idea of
+                    a personal robot at the airport. The primary goal was visualizing how to package a high-torque
+                    transmission, a heavy-duty spring, and the necessary sensors into a compact knee joint to make the
+                    robot jump.</p>
+
                 <!-- Replace with your scanned sketch image -->
-                <img src="../images/Projects/Hank/hank-airport-sketches-1.jpg" alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
-                <img src="../images/Projects/Hank/hank-airport-sketches-2.jpg" alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />                
-                
+                <img src="../images/Projects/Hank/hank-airport-sketches-1.jpg"
+                    alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
+                <img src="../images/Projects/Hank/hank-airport-sketches-2.jpg"
+                    alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
+
                 <div class="callout solution">
                     <h4>The Core Idea</h4>
-                    <p>These initial drawings locked in the idea of what this project will look like long term and gave me a strong base to work off of.</p>
+                    <p>These initial drawings locked in the idea of what this project will look like long term and gave
+                        me a strong base to work off of.</p>
                 </div>
             </section>
             <!-- Log Post 1: 3D Model -->
@@ -478,32 +485,42 @@
                 </div>
             </section>
 
-            <!-- Log Post 3: Physical Build & Code -->
-            <section id="post-integration" class="log-post">
-                <div class="post-date">August 05, 2026 | Assembly & Embedded Control</div>
-                <h2>Physical Integration & SPI Comm.</h2>
-                <p>With the mechanical components finalized and printed, the transmission was integrated into the
-                    primary chassis. To control the system and prepare for balancing, an ESP32 microcontroller was
-                    configured to interface with an ADXL345 accelerometer via SPI protocols.</p>
+            <!-- Log Post 3: V1 Revisions -->
+            <section id="post-v1-breakdown" class="log-post">
+                <div class="post-date">September 05, 2026 | V1 Revisions</div>
+                <h2>Knee Prototype Analysis & Tolerance Adjustments</h2>
+                <div class="callout problem">
+                    <h4>The Problem</h4>
+                    <p>Early iterations of the 3D-printed transmission suffered from shear failure on the engagement
+                        teeth due to the sudden application of torque when the loaded spring was released. The interior
+                        corners created heavy stress concentrations.</p>
+                </div>
 
-                <img src="../images/hank-build-1.jpg" alt="Hank Physical Build Process" class="media-image" />
+                <div class="callout solution">
+                    <h4>The Iteration</h4>
+                    <p>I returned to SolidWorks to redesign the engagement geometry, adding specific filleting to
+                        distribute stress across the structural layers of the 3D print, optimizing the design
+                        specifically for the anisotropic properties of FDM manufacturing.</p>
+                </div>
 
-                <pre><code>// ESP32 SPI configuration snippet for ADXL345
-#include &lt;SPI.h&gt;
+                <pre style="border-left: 4px solid #f59e0b;"><span style="color: #888;">// FILE: v2_hardware_revision_notes.txt
+// STATUS: Pending CAD Update</span>
 
-const int CS_PIN = 5;
+- Screw holes smaller (screw dia 2.5mm)
+- Screw inset of 2.5 mm
+- Long Screw between gear and motor box
+- On hollow donut part shift upper screw holes for easy assembly
+- Screw holes need to be .5mm smaller to account for tight threading
+- gear press fit on outer face needs to be a lot tighter too much tolerance decrease by .4mm?
+- bearing holes shrink by .2 .2 and .7
+- double thickness of motor mount
+- increase thickness of middle bearing walls
+- shift servo mount closer to output side for easier assembly ~2mm</pre>
 
-void setup() {
-  Serial.begin(115200);
-  SPI.begin();
-  pinMode(CS_PIN, OUTPUT);
-  digitalWrite(CS_PIN, HIGH);
-  
-  // Configure ADXL345 for SPI 4-wire mode
-  writeRegister(0x31, 0x0B); 
-  // Set to measurement mode
-  writeRegister(0x2D, 0x08); 
-}</code></pre>
+                <img src="../images/hank-v1-measuring.jpg" alt="Parts being measured" class="media-image" />
+                <img src="../images/hank-v1-vs-v2.jpg" alt="Version Comparison" class="media-image" />
+
+
 
             </section>
 

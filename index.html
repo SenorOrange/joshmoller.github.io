@@ -8,8 +8,37 @@
 	<head>
 		<title>Josh Moller | Mechatronics Portfolio</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Josh Moller – Mechatronics Engineering student at the University of Guelph. CAD design, robotics and embedded systems projects." />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Monogram shown in place of a headshot. To use a photo instead, replace the
+			   <span class="image avatar48 monogram">JM</span> with
+			   <span class="image avatar48"><img src="images/your-headshot.jpg" alt="Josh Moller" /></span> */
+			.image.avatar48.monogram {
+				background: rgba(255, 255, 255, 0.08);
+				color: #fff;
+				font-weight: 600;
+				font-size: 18px;
+				letter-spacing: 1px;
+				line-height: 48px;
+				text-align: center;
+				border-radius: 6px;
+			}
+			/* Project cards */
+			.project-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+			.project-card.has-link:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.10) !important; }
+			.project-card .media-soon {
+				width: 100%; height: 100%; display: flex; flex-direction: column;
+				align-items: center; justify-content: center; gap: 0.4em;
+				background: linear-gradient(135deg, #2b2b2b, #3a3f44); color: rgba(255,255,255,0.75);
+			}
+			.project-card .media-soon .icon { font-size: 1.8em; color: rgba(255,255,255,0.5); }
+			.project-card .badge {
+				display: inline-block; margin-top: 0.9em; padding: 0.2em 0.8em; border-radius: 20px;
+				font-size: 0.75em; font-weight: 600; background: #eef3f3; color: #5f8f8d;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -20,7 +49,7 @@
 
 					<!-- Logo -->
 					<div id="logo">
-						<span class="image avatar48"><img src="images/avatar.jpg" alt="Josh Moller Headshot" /></span>
+						<span class="image avatar48 monogram">JM</span>
 						<h1 id="title">Josh Moller</h1>
 						<p style="font-size: 12px;">Mechatronics Engineering Student</p>
 					</div>
@@ -79,7 +108,7 @@
 							</header>
 
 							<p>A curated collection of my mechatronics work, ranging from rigorous academic design, 
-								personal robotics development like HΛNK, and my leadership as a sub-team lead (Fall 26) for the University of Guelph Robotics Team (UGRT). 
+								personal robotics development like HΛNK, and my work as Mechanical Design Sub-Team Lead for the University of Guelph Robotics Team (UGRT).
 								These projects reflect a focus on the synergy between mechanical systems, CAD precision, and embedded software integration.</p>
 
 							<div class="row" id="portfolio-grid">
@@ -96,11 +125,11 @@
             <h2>About Me</h2>
         </header>
 
-        <a href="#" class="image featured"><img src="images/pic08.jpg" alt="Josh Moller" /></a>
+        <!-- To add a photo here: <span class="image featured"><img src="images/your-photo.jpg" alt="Josh Moller" /></span> -->
 
-        <p>I'm a Mechatronics Engineering student at the University of Guelph with a passion for bridging mechanical design with intelligent software. As a sub-team lead for the University of Guelph Robotics Team (UGRT), I specialize in CAD integration, UI panel casing, and rover frame alterations.</p>
+        <p>I'm a Mechatronics Engineering student at the University of Guelph with a passion for bridging mechanical design with intelligent software. As Mechanical Design Sub-Team Lead for the University of Guelph Robotics Team (UGRT), I specialize in CAD integration, UI panel casing, and rover frame alterations.</p>
         
-        <p>Outside of my formal studies, I'm a builder at heart. You'll often find me designing in SolidWorks, writing C++ for Arduino systems, or 3D printing custom parts on my Sovol SV07 Plus for personal projects like "Hank," a custom robot utilizing a dog-clutch knee transmission. I also hold an Advanced Remotely Piloted Aircraft certificate from Transport Canada. When I'm not bringing mechatronic concepts to life, I'm usually tracking down specific LEGO sets or cheering on the Edmonton Oilers.</p>
+        <p>Outside of my formal studies, I'm a builder at heart. You'll often find me designing in SolidWorks, writing C++ for Arduino systems, or 3D printing custom parts on my Sovol SV07 Plus for personal projects like HΛNK, a custom robot utilizing a dog-clutch knee transmission. I also hold an Advanced Remotely Piloted Aircraft certificate from Transport Canada. When I'm not bringing mechatronic concepts to life, I'm usually tracking down specific LEGO sets or cheering on the Edmonton Oilers.</p>
 
     </div>
 </section>
@@ -129,7 +158,7 @@
 
 				<!-- Copyright -->
 					<ul class="copyright">
-						&copy; 2026 Joshua Moller. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a> | Hosted on <a href="https://pages.github.com/">GitHub Pages</a>
+						<li>&copy; 2026 Joshua Moller. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>Hosted on <a href="https://pages.github.com/">GitHub Pages</a></li>
 					</ul>
 
 			</div>
@@ -162,15 +191,29 @@
 							
 							let html = '';
 							
-							projects.forEach(project => {
+							// Fallback shown when a project has no media yet (or its thumbnail fails to load)
+							const soonTile = '<div class="media-soon"><span class="icon solid fa-cogs"></span><span>Media coming soon</span></div>';
+
+							projects
+								.filter(project => !project.hidden) // set "hidden": true in projects.json to take a card off the site
+								.forEach(project => {
+								// "comingSoon": true shows the card without linking to its (unfinished) page
+								const linked = !project.comingSoon && project.link;
+								const tag = linked ? 'a' : 'div';
+								const linkAttrs = linked ? `href="${project.link}"` : '';
+								const media = project.thumbnail
+									? `<img src="${project.thumbnail}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.outerHTML=this.closest('.project-card').dataset.soon;" />`
+									: soonTile;
+
 								html += `
-									<article class="item" style="flex: 0 1 320px; background: #fff; margin: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-										<a href="${project.link}" target="_blank" class="image fit" style="margin: 0; background-color: #2b2b2b; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden; text-decoration: none;">
-											<img src="${project.thumbnail}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.outerHTML='<span style=\\'color:#888; font-size:1.2em;\\'>Image Placeholder</span>';" />
-										</a>
+									<article class="item project-card ${linked ? 'has-link' : ''}" data-soon='${soonTile}' style="flex: 0 1 320px; background: #fff; margin: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+										<${tag} ${linkAttrs} class="image fit" style="margin: 0; background-color: #2b2b2b; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden; text-decoration: none; border: 0;">
+											${media}
+										</${tag}>
 										<header style="padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start;">
-											<h3 style="margin: 0 0 0.5em 0; font-size: 1.2em; color: #333;">${project.title}</h3>
+											<h3 style="margin: 0 0 0.5em 0; font-size: 1.2em; color: #333;">${linked ? `<a href="${project.link}" style="color: inherit; border: 0;">${project.title}</a>` : project.title}</h3>
 											<p style="font-size: 0.9em; margin: 0; color: #777; line-height: 1.6;">${project.description}</p>
+											${project.comingSoon ? '<div><span class="badge">Write-up in progress</span></div>' : ''}
 										</header>
 									</article>
 								`;

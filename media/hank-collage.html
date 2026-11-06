@@ -357,7 +357,8 @@
 
     <!-- 1. Executive Hero Section -->
     <header class="hero">
-        <div class="hero-container">
+        <div class="hero-container" style="margin-bottom: 0;">
+            <a href="../index.html#portfolio" class="back-link" style="grid-column: 1 / -1; justify-self: start; font-weight: 600; color: #666; border-bottom: none; text-decoration: none;">&larr; Back to portfolio</a>
             <div class="hero-text">
                 <h1>HΛNK: Robot Assistant</h1>
                 <span class="hero-role">Personal Robotics Project</span>
@@ -373,8 +374,8 @@
                 </ul>
             </div>
             <div class="hero-media">
-                <img src="../images/hank-action.jpg" alt="HANK Prototype in action" class="media-image"
-                    style="margin: 0; cursor: default;">
+                <img src="../images/Projects/Hank/hankKneeRenderV2.jpg" alt="HΛNK knee transmission render (transparent shell)" class="media-image"
+                    style="margin: 0;">
             </div>
         </div>
     </header>
@@ -410,7 +411,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#small_hicup" class="nav-link">
+                    <a href="#post-pinion" class="nav-link">
                         <span class="nav-date">September 18, 2026</span>
                         <span class="nav-title">Reassess Pinion Mount</span>
                     </a>
@@ -429,8 +430,7 @@
                     transmission, a heavy-duty spring, and the necessary sensors into a compact knee joint to make the
                     robot jump.</p>
 
-                <!-- Replace with your scanned sketch image -->
-                <img src="../images/Projects/Hank/hank-airport-sketches-1.jpg"
+                                <img src="../images/Projects/Hank/hank-airport-sketches-1.jpg"
                     alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
                 <img src="../images/Projects/Hank/hank-airport-sketches-2.jpg"
                     alt="Initial hand-drawn concept sketches of the HANK robot" class="media-image" />
@@ -501,14 +501,14 @@
                     <h4>Hardware Audit: FDM Shrinkage</h4>
                     <p>Following the initial print of the V1 knee assembly, test fitting the parts and screws revealed
                         that FDM shrinkage caused the tolerances to be off with the bearing press-fits, the high torque
-                        of the motor also revealed significantly thicker mounts were needed for the motor</p>
+                        of the motor also revealed significantly thicker mounts were needed for the motor.</p>
                 </div>
 
                 <div class="callout solution">
                     <h4>Design for Assembly (DFA) Improvements</h4>
                     <p>Beyond simple tolerance tweaks, shifting the servo mount 2mm and realigning the screw holes on
                         the donut component were critical changes to allow actual tools to reach the hardware during
-                        physical assembly and to make assembly straight forward.</p>
+                        physical assembly and to make assembly straightforward.</p>
                 </div>
 
                 <pre style="border-left: 4px solid #f59e0b;"><span style="color: #888;">// FILE: v2_hardware_revision_notes.txt
@@ -532,28 +532,28 @@
 
             </section>
 
-            <!-- Log Post 4:  -->
-            <section id="small_hicup" class="log-post">
+            <!-- Log Post 4: Pinion Mount -->
+            <section id="post-pinion" class="log-post">
                 <div class="post-date">September 18, 2026 | Small Design Hiccup</div>
                 <h2>Problem With Assembly</h2>
                 <p>During initial planning of the gear box it was planned to use a lathe to shrink the diameter of the
                     shaft to allow the pinion gear to attach. This was because there were no options online to fit the
                     size.</p>
 
-                <img src="../images/Projects/Hank/hankKneeSchematicV1.jpg" alt="Custom Pinion Gear"
+                <img src="../images/Projects/Hank/hankKneeSchematicV1.jpg" alt="Knee transmission schematic showing the pinion and motor shaft"
                     class="media-image" />
 
                 <div class="callout problem">
                     <h4>The Problem</h4>
-                    <p>It recently came to my attention that the shop at the univeristy didnt allow for use of the lathe
-                        for anything besides projects dealing with the Robotics Team.</p>
+                    <p>It recently came to my attention that the university's shop doesn't allow use of the lathe
+                        for anything besides Robotics Team projects.</p>
                 </div>
 
                 <div class="callout solution">
                     <h4>The Solution</h4>
                     <p>After thinking about it for a while I realized that I am able to design the pinion in a certain
                         way to maximize the overall strength. This is achieved by sandwiching a nut in the middle of the
-                        gear printed out of PETG - CF and when screwing it onto the axel the compression force will make
+                        gear printed out of PETG-CF and when screwing it onto the axle the compression force will make
                         it stronger under load.</p>
                 </div>
             </section>

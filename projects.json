@@ -2,7 +2,7 @@
   {
     "id": "hank-robot",
     "title": "HΛNK: Robot Assistant",
-    "description": "Designed to help with work, uses custom knee transmission utilizing dog clutches and stepper motors to jump.",
+    "description": "Personal robot assistant with a custom knee transmission that uses dog clutches and stepper motors to jump.",
     "thumbnail": "images/hank-thumb.jpg",
     "link": "media/hank-collage.html"
   },
@@ -10,15 +10,17 @@
     "id": "ugrt-ui",
     "title": "Rover UI Panel",
     "description": "Custom casing and CAD integration for the UGRT rover.",
-    "thumbnail": "images/ugrt-ui-thumb.jpg",
-    "link": "media/ugrt-ui-collage.html"
+    "thumbnail": "",
+    "link": "media/ugrt-ui-collage.html",
+    "comingSoon": true
   },
   {
     "id": "ugrt-dexterity-panel",
     "title": "Rover Dexterity Panel",
     "description": "Panel consisting of multiple modules to test the UGRT arm.",
-    "thumbnail": "images/ugrt-dexterity-thumb.jpg",
-    "link": "media/ugrt-dexterity-collage.html"
+    "thumbnail": "",
+    "link": "media/ugrt-dexterity-collage.html",
+    "comingSoon": true
   },
   {
     "id": "engg1100",
@@ -32,7 +34,7 @@
     "title": "Self Watering Arm",
     "description": "Grade 12 attempt at a watering robotic arm.",
     "thumbnail": "images/gr12-cap-thumb.jpg",
-    "link": "media/gr12-cap-collage.html"
+    "link": "media/gr12-cap-collage.html",
+    "hidden": true
   }
 ]
-

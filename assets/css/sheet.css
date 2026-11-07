@@ -1,0 +1,321 @@
+/* ==========================================================================
+   joshmoller.ca – "drawing sheet" theme
+   Loaded after main.css. The landing section is laid out like an engineering
+   drawing: sheet border with grid zones, Fig. 1, a redline note and a title
+   block. The rest of the page picks up the same type and colours.
+   ========================================================================== */
+
+@font-face {
+	font-family: 'Archivo';
+	src: url('../webfonts/archivo-latin-wdth-normal.woff2') format('woff2-variations'),
+	     url('../webfonts/archivo-latin-wdth-normal.woff2') format('woff2');
+	font-weight: 100 900;
+	font-stretch: 62% 125%;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--paper: #ECEEEC;      /* drafting vellum */
+	--paper-hi: #F6F7F6;   /* lighter sheet for sections and cards */
+	--graphite: #1E2225;   /* ink, sidebar */
+	--pencil: #636B70;     /* secondary text, frame marks */
+	--grid: #D7DBDA;       /* grid and hairlines */
+	--redline: #CC3A2E;    /* markup red, used sparingly */
+}
+
+/* ---- Base type ---------------------------------------------------------- */
+
+body, input, textarea, select {
+	font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+	font-weight: 400;
+	color: #4A5155;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+	color: var(--graphite);
+}
+
+#main > section > .container > header > h2,
+#main > section h2 {
+	font-weight: 700;
+	font-stretch: 112%;
+	letter-spacing: -0.02em;
+}
+
+a:focus-visible, .button:focus-visible {
+	outline: 2px solid var(--redline);
+	outline-offset: 3px;
+}
+
+/* ---- Sidebar ------------------------------------------------------------ */
+
+#header {
+	background: var(--graphite);
+	box-shadow: none;
+}
+
+#logo h1 {
+	font-weight: 700;
+	font-stretch: 112%;
+	letter-spacing: -0.01em;
+}
+
+#logo p { color: rgba(255, 255, 255, 0.55); }
+
+#nav ul li a.active {
+	background: rgba(255, 255, 255, 0.04);
+	box-shadow: inset 3px 0 0 0 var(--redline);
+}
+
+#nav ul li a.active span:before { color: var(--redline); }
+
+/* ---- Section backgrounds (replace the template's noise texture) ---------- */
+
+#main > section { background-image: none; box-shadow: inset 0 1px 0 0 var(--grid); }
+#main > section.two { background-color: var(--paper-hi); }
+#main > section.three { background-color: var(--paper); }
+#main > section.four { background-color: var(--paper-hi); }
+#footer { background-color: var(--paper); box-shadow: inset 0 1px 0 0 var(--grid); color: var(--pencil); }
+
+.button {
+	background-color: var(--graphite);
+	border-radius: 3px;
+	font-weight: 600;
+}
+.button:hover { background-color: var(--redline); }
+
+/* Project cards: flat sheet, hairline border instead of drop shadow */
+.project-card {
+	box-shadow: none !important;
+	border: 1px solid var(--grid);
+	border-radius: 4px !important;
+	background: #fff;
+}
+.project-card.has-link:hover { transform: none; border-color: var(--graphite); }
+.project-card h3 { font-weight: 600; font-stretch: 105%; }
+.project-card .badge { background: transparent; color: var(--redline); border: 1px solid currentColor; font-weight: 500; }
+.project-card .media-soon { background: var(--paper); color: var(--pencil); }
+.project-card .media-soon .icon { color: var(--grid); }
+
+/* ==========================================================================
+   Landing sheet
+   ========================================================================== */
+
+#main > section.sheet {
+	padding: 28px;
+	text-align: left;
+	background-color: var(--paper);
+	box-shadow: none;
+	font-size: 16px;
+	line-height: 1.55;
+}
+
+.sheet-frame {
+	position: relative;
+	min-height: calc(100vh - 56px);
+	border: 1.5px solid var(--graphite);
+	/* faint drafting grid */
+	background-image:
+		linear-gradient(#E0E3E2 1px, transparent 1px),
+		linear-gradient(90deg, #E0E3E2 1px, transparent 1px);
+	background-size: 40px 40px;
+	background-position: -1px -1px;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Grid-reference zones along the border, like a real drawing sheet */
+.zones {
+	position: absolute;
+	display: flex;
+	color: var(--pencil);
+	font-size: 11px;
+	font-stretch: 85%;
+	pointer-events: none;
+	user-select: none;
+}
+.zones span { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; }
+.zones-x { left: 22px; right: 0; height: 22px; }
+.zones-x.top { top: 0; border-bottom: 1px solid var(--pencil); border-left: 1px solid var(--pencil); }
+.zones-x span + span::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--pencil); }
+.zones-y { top: 22px; bottom: 0; left: 0; width: 22px; flex-direction: column; border-right: 1px solid var(--pencil); }
+.zones-y span + span::before { content: ''; position: absolute; top: 0; left: 0; right: 0; border-top: 1px solid var(--pencil); }
+
+.sheet-body {
+	flex: 1;
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	align-items: center;
+	gap: 32px;
+	padding: 64px 56px 150px 80px;
+}
+
+.sheet-name {
+	margin: 0 0 28px 0;
+	font-size: clamp(64px, 8.4vw, 144px);
+	font-weight: 800;
+	font-stretch: 125%;
+	line-height: 0.86;
+	letter-spacing: -0.035em;
+	color: var(--graphite);
+}
+
+.sheet-lede {
+	max-width: 30em;
+	margin: 0 0 20px 0;
+	font-size: clamp(17px, 1.35vw, 21px);
+	line-height: 1.5;
+	color: #3A4045;
+}
+
+.sheet-status {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	margin: 0 0 32px 0;
+	font-size: 15px;
+	color: var(--pencil);
+}
+.sheet-status .dot {
+	flex: none;
+	width: 8px; height: 8px;
+	border-radius: 50%;
+	background: var(--redline);
+	transform: translateY(-1px);
+}
+
+.sheet-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+#main > section.sheet a.sheet-btn {
+	display: inline-block;
+	padding: 13px 22px;
+	border-radius: 3px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	border: 1.5px solid var(--graphite);
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+#main > section.sheet a.sheet-btn.ink { background: var(--graphite); color: #fff; }
+#main > section.sheet a.sheet-btn.ink:hover { background: var(--redline); border-color: var(--redline); }
+#main > section.sheet a.sheet-btn.line { background: transparent; color: var(--graphite); }
+#main > section.sheet a.sheet-btn.line:hover { background: var(--graphite); color: #fff; }
+
+/* Fig. 1 with the redline note */
+.sheet-fig {
+	position: relative;
+	margin: 0;
+	justify-self: center;
+	width: 100%;
+	max-width: 520px;
+	aspect-ratio: 1008 / 1104;
+}
+.sheet-fig > a { display: block; width: 100%; height: 100%; border: 0; }
+.sheet-fig img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	mix-blend-mode: multiply;           /* drops the render's white background onto the paper */
+}
+.sheet-fig figcaption {
+	position: absolute;
+	left: 50%;
+	bottom: -6px;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-size: 13px;
+	color: var(--pencil);
+}
+.sheet-fig figcaption b { color: var(--graphite); font-weight: 700; margin-right: 6px; }
+
+.redline {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	overflow: visible;
+}
+.redline path, .redline circle {
+	fill: none;
+	stroke: var(--redline);
+	stroke-width: 0.32;
+	stroke-linecap: round;
+}
+.redline-note {
+	position: absolute;
+	right: -8px;
+	top: 6%;
+	max-width: 13em;
+	font-size: 14px;
+	line-height: 1.35;
+	color: var(--redline);
+	text-align: right;
+}
+.redline-note strong { display: block; font-weight: 700; font-stretch: 110%; color: inherit; }
+
+/* The one animated moment: the markup draws itself in after load */
+@media (prefers-reduced-motion: no-preference) {
+	.redline path, .redline circle {
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		animation: redline-draw 0.9s 0.5s cubic-bezier(.6,.1,.3,1) forwards;
+	}
+	.redline-note { opacity: 0; animation: redline-note 0.4s 1.3s ease-out forwards; }
+}
+@keyframes redline-draw { to { stroke-dashoffset: 0; } }
+@keyframes redline-note { to { opacity: 1; } }
+
+/* Title block */
+.title-block {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	margin: 0;
+	background: var(--paper-hi);
+	border-top: 1.5px solid var(--graphite);
+	border-left: 1.5px solid var(--graphite);
+	font-size: 13px;
+	line-height: 1.3;
+}
+.title-block div {
+	padding: 8px 16px 9px 12px;
+	border-right: 1px solid var(--grid);
+	border-bottom: 1px solid var(--grid);
+}
+.title-block div:nth-child(3n) { border-right: 0; }
+.title-block div:nth-last-child(-n+3) { border-bottom: 0; }
+.title-block dt { margin: 0; color: var(--pencil); font-size: 11px; }
+.title-block dd { margin: 0; color: var(--graphite); font-weight: 600; }
+
+/* ---- Responsive ---------------------------------------------------------- */
+
+@media screen and (max-width: 1280px) {
+	.sheet-body { padding: 56px 40px 150px 64px; }
+	.title-block { grid-template-columns: repeat(2, auto); }
+	.title-block div:nth-child(3n) { border-right: 1px solid var(--grid); }
+	.title-block div:nth-child(2n) { border-right: 0; }
+	.title-block div:nth-last-child(-n+3) { border-bottom: 1px solid var(--grid); }
+	.title-block div:nth-last-child(-n+2) { border-bottom: 0; }
+	.sheet-body { padding-bottom: 190px; }
+}
+
+@media screen and (max-width: 960px) {
+	#main > section.sheet { padding: 56px 14px 14px 14px; } /* clears the menu button */
+	.sheet-frame { min-height: 0; }
+	.sheet-body { grid-template-columns: 1fr; gap: 8px; padding: 44px 24px 28px 46px; }
+	.sheet-fig { max-width: 340px; margin-top: 12px; }
+	.title-block { position: static; margin-left: 22px; border-left: 1px solid var(--pencil); grid-template-columns: 1fr 1fr; }
+	.zones-x span:nth-child(n+4), .zones-y span:nth-child(n+4) { display: none; }
+}
+
+@media screen and (max-width: 480px) {
+	.sheet-name { font-size: 58px; }
+	.sheet-body { padding: 40px 18px 24px 38px; }
+	.redline-note { font-size: 13px; max-width: 10em; }
+	.title-block { font-size: 12px; }
+}

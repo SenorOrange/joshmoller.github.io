@@ -26,8 +26,7 @@
 				border-radius: 6px;
 			}
 			/* Project cards */
-			.project-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-			.project-card.has-link:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.10) !important; }
+			.project-card { transition: border-color 0.15s ease; }
 			.project-card .media-soon {
 				width: 100%; height: 100%; display: flex; flex-direction: column;
 				align-items: center; justify-content: center; gap: 0.4em;
@@ -39,6 +38,7 @@
 				font-size: 0.75em; font-weight: 600; background: #eef3f3; color: #5f8f8d;
 			}
 		</style>
+		<link rel="stylesheet" href="assets/css/sheet.css" />
 	</head>
 	<body class="is-preload">
 
@@ -81,21 +81,45 @@
 		<!-- Main -->
 			<div id="main">
 
-				<!-- Intro -->
-				<section id="top" class="one dark cover">
-					<div class="container">
-				
-						<header>
-							<h2 class="alt">Hello! I'm <strong>Josh Moller</strong>,<br />
-							a Mechatronics Engineering student at the University of Guelph.</h2>
-							<p>Bridging the gap between physical hardware and intelligent software<br />
-							through CAD design, robotics, and embedded systems.</p>
-						</header>
-				
-						<footer>
-							<a href="#portfolio" class="button scrolly">View My Work</a>
-						</footer>
-				
+				<!-- Intro: laid out like an engineering drawing sheet (styles in assets/css/sheet.css) -->
+				<section id="top" class="sheet">
+					<div class="sheet-frame">
+						<div class="zones zones-x top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+						<div class="zones zones-y" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+
+						<div class="sheet-body">
+							<div class="sheet-text">
+								<h2 class="sheet-name">Josh<br />Moller</h2>
+								<p class="sheet-lede">Mechatronics engineering student at the University of Guelph. I design mechanisms in SolidWorks, prototype them with 3D printing, and write the ESP32 firmware that makes them move.</p>
+								<!-- Update or delete this line when your co-op search changes -->
+								<p class="sheet-status"><span class="dot" aria-hidden="true"></span>Looking for a summer 2027 co-op in robotics or electromechanical design.</p>
+								<div class="sheet-actions">
+									<a href="#portfolio" class="sheet-btn ink scrolly">See my projects</a>
+									<a href="mailto:josh@joshmoller.ca" class="sheet-btn line">Email me</a>
+								</div>
+							</div>
+
+							<figure class="sheet-fig">
+								<a href="media/hank-collage.html" aria-label="Open the HΛNK project log">
+									<img src="images/hero-hank-knee.jpg" alt="Render of the HΛNK knee transmission with a transparent red housing" />
+								</a>
+								<svg class="redline" viewBox="0 0 91.3 100" preserveAspectRatio="none" aria-hidden="true">
+									<circle cx="46" cy="45" r="10" pathLength="1" transform="rotate(-50 46 45)" />
+									<path d="M53,37.5 L72,17 L93,17" pathLength="1" />
+								</svg>
+								<p class="redline-note"><strong>Currently building</strong>HΛNK knee transmission</p>
+								<figcaption><b>Fig. 1</b>HΛNK knee joint, SolidWorks render</figcaption>
+							</figure>
+						</div>
+
+						<dl class="title-block">
+							<div><dt>Drawn by</dt><dd>Josh Moller</dd></div>
+							<div><dt>Program</dt><dd>Mechatronics Eng. (Co-op)</dd></div>
+							<div><dt>School</dt><dd>University of Guelph</dd></div>
+							<div><dt>Team</dt><dd>UGRT, mechanical design lead</dd></div>
+							<div><dt>Location</dt><dd>Guelph, ON</dd></div>
+							<div><dt>Rev.</dt><dd>Nov 2026</dd></div>
+						</dl>
 					</div>
 				</section>
 

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>UGRT Rover: Wheel Assembly &amp; Steering Redesign | Media</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!-- This links back one folder level to your main CSS -->
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <style>
+            /* Custom styles just for the collage grid */
+            body { background: #fff; color: #444; padding: 2em; text-align: center; }
+            .collage-container { max-width: 1000px; margin: 0 auto; }
+            .media-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin-top: 2em;
+            }
+            .media-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+            .back-btn { margin-bottom: 2em; display: inline-block; }
+        </style>
+    </head>
+    <body>
+
+        <div class="collage-container">
+            <a href="../index.html#portfolio" class="back-btn" style="border-bottom: none; font-weight: 600; color: #666;">&larr; Back to portfolio</a>
+
+            <!-- Header Section -->
+            <header>
+                <h2>UGRT Rover: Wheel Assembly &amp; Steering Redesign</h2>
+                <p>Ground-up redesign of the wheel assemblies and per-wheel steering systems for UGRT's 50 kg, 6-wheel rover—designed to be lightweight while hauling a 100+ kg competition trailer.</p>
+            </header>
+
+            <div class="media-grid">
+                <img src="../images/Projects/UGRT/wheel-assembly-iso.jpg" alt="Wheel and steering assembly isometric CAD view" />
+                <img src="../images/Projects/UGRT/wheel-assembly-side.jpg" alt="Wheel and steering assembly side CAD view" />
+                <img src="../images/Projects/UGRT/wheel-assembly-front.jpg" alt="Wheel and steering assembly front CAD view" />
+            </div>
+
+            <p class="media-soon" style="margin-top: 2em; padding: 2em 1em; background: #f4f6f6; border-radius: 8px; color: #777;">
+                Full engineering log and prototype test media coming soon.
+            </p>
+        </div>
+
+        <div id="image-overlay" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
+            <img id="enlarged-image" src="" style="max-width:90%; max-height:90%; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
+        </div>
+
+        <script src="../assets/js/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('.media-grid img').css('cursor', 'zoom-in').on('click', function() {
+                var src = $(this).attr('src');
+                $('#enlarged-image').attr('src', src);
+                $('#image-overlay').css('display', 'flex');
+            });
+
+            $('#image-overlay').on('click', function() {
+                $(this).hide();
+            });
+        });
+        </script>
+
+    </body>
+</html>

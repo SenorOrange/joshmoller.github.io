@@ -7,6 +7,14 @@
     "link": "media/hank-collage.html"
   },
   {
+    "id": "ugrt-wheel-assembly",
+    "title": "UGRT Rover: Wheel Assembly & Steering Redesign",
+    "description": "Ground-up redesign of the wheel assemblies and per-wheel steering systems for UGRT's 50 kg, 6-wheel rover—designed to be lightweight while hauling a 100+ kg competition trailer.",
+    "thumbnail": "images/ugrt-wheel-thumb.jpg",
+    "link": "media/ugrt-wheel-collage.html",
+    "comingSoon": true
+  },
+  {
     "id": "ugrt-ui",
     "title": "Rover UI Panel",
     "description": "Custom casing and CAD integration for the UGRT rover.",

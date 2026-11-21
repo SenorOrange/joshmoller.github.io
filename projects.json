@@ -9,26 +9,24 @@
   {
     "id": "ugrt-wheel-assembly",
     "title": "UGRT Rover: Wheel Assembly & Steering Redesign",
-    "description": "Ground-up redesign of the wheel assemblies and per-wheel steering systems for UGRT's 50 kg, 6-wheel rover—designed to be lightweight while hauling a 100+ kg competition trailer.",
+    "description": "Ground-up redesign of the wheel assemblies and per-wheel steering systems for UGRT's 50 kg, 6-wheel rover, designed to be lightweight while hauling a 100+ kg competition trailer.",
     "thumbnail": "images/ugrt-wheel-thumb.jpg",
     "link": "media/ugrt-wheel-collage.html",
     "comingSoon": true
   },
   {
     "id": "ugrt-ui",
-    "title": "Rover UI Panel",
-    "description": "Custom casing and CAD integration for the UGRT rover.",
-    "thumbnail": "",
-    "link": "media/ugrt-ui-collage.html",
-    "comingSoon": true
+    "title": "UGRT Rover: Rear Control & E-Stop Enclosure",
+    "description": "Custom-packaged rear enclosure integrated into the UGRT rover frame, housing core control electronics, emergency stop access, and modular space for a future UI panel.",
+    "thumbnail": "images/ugrt-ui-thumb.jpg",
+    "link": "media/ugrt-ui-collage.html"
   },
   {
     "id": "ugrt-dexterity-panel",
-    "title": "Rover Dexterity Panel",
-    "description": "Panel consisting of multiple modules to test the UGRT arm.",
-    "thumbnail": "",
-    "link": "media/ugrt-dexterity-collage.html",
-    "comingSoon": true
+    "title": "UGRT Rover: Modular Arm Dexterity Board",
+    "description": "Modular pegboard test rig for UGRT's robotic arm, combining custom lever, dial, and crank modules with custom embedded firmware that challenges operators to hit randomized potentiometer targets on an LCD.",
+    "thumbnail": "images/ugrt-dexterity-thumb.jpg",
+    "link": "media/ugrt-dexterity-collage.html"
   },
   {
     "id": "engg1100",

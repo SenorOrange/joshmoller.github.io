@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Rover UI Panel | Media</title>
+        <title>UGRT Rover: Rear Control &amp; E-Stop Enclosure | Media</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <!-- This links back one folder level to your main CSS -->
@@ -10,14 +10,75 @@
             /* Custom styles just for the collage grid */
             body { background: #fff; color: #444; padding: 2em; text-align: center; }
             .collage-container { max-width: 1000px; margin: 0 auto; }
-            .media-grid { 
-                display: grid; 
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-                gap: 20px; 
-                margin-top: 2em;
-            }
-            .media-grid img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
             .back-btn { margin-bottom: 2em; display: inline-block; }
+            .section-heading {
+                margin: 2.5em 0 0.5em 0;
+                font-size: 1.35em;
+                color: #2b2b2b;
+            }
+            .section-sub {
+                margin: 0 auto 1.5em auto;
+                max-width: 720px;
+                color: #666;
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+            .media-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+                gap: 24px;
+                margin-top: 1.5em;
+            }
+            .module-card {
+                background: #fafafa;
+                border: 1px solid #e6e6e6;
+                border-radius: 8px;
+                overflow: hidden;
+                text-align: left;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                display: flex;
+                flex-direction: column;
+            }
+            .module-card img {
+                width: 100%;
+                aspect-ratio: 16/10;
+                object-fit: cover;
+                display: block;
+                cursor: zoom-in;
+                background: #ececec;
+            }
+            .module-caption {
+                padding: 1.1em 1.25em;
+            }
+            .module-caption h3 {
+                margin: 0 0 0.35em 0;
+                font-size: 1.05em;
+                color: #2b2b2b;
+            }
+            .module-caption p {
+                margin: 0;
+                font-size: 0.88em;
+                color: #666;
+                line-height: 1.55;
+            }
+            .coming-soon-box {
+                margin-top: 2em;
+                padding: 2em 1.25em;
+                background: #f4f6f6;
+                border: 1px dashed #cfd6d8;
+                border-radius: 8px;
+                color: #666;
+            }
+            .coming-soon-box strong {
+                display: block;
+                color: #333;
+                margin-bottom: 0.35em;
+                font-size: 1.05em;
+            }
+            .coming-soon-box p {
+                margin: 0;
+                font-size: 0.9em;
+            }
         </style>
     </head>
     <body>
@@ -27,16 +88,43 @@
 
             <!-- Header Section -->
             <header>
-                <h2>Rover UI Panel</h2>
-                <p>Custom casing and CAD integration for the UGRT rover.</p>
+                <h2>UGRT Rover: Rear Control &amp; E-Stop Enclosure</h2>
+                <p>Custom-packaged rear enclosure integrated into the UGRT rover frame, housing core control electronics, emergency stop access, and modular space for a future UI panel.</p>
             </header>
 
-            <!-- Media Grid: add images here once you have them, e.g.
-                 <img src="../images/Projects/UGRT/your-image.jpg" alt="Describe the image" /> -->
-            <div class="media-grid"></div>
-            <p class="media-soon" style="margin-top: 2em; padding: 2.5em 1em; background: #f4f6f6; border-radius: 8px; color: #777;">
-                Photos and CAD screenshots for this project are on the way.
-            </p>
+            <h3 class="section-heading">CAD Design &amp; Chassis Integration</h3>
+            <p class="section-sub">Designed to fit tightly between the aluminum extrusion frame and rear cooling fans while providing clean cable routing and serviceable lid access. Click any render to zoom.</p>
+
+            <div class="media-grid">
+                <figure class="module-card" style="margin: 0;">
+                    <img src="../images/Projects/UGRT/enclosure-rover-integration.jpg" alt="Rear Control & E-Stop Enclosure integrated into the UGRT rover frame" />
+                    <figcaption class="module-caption">
+                        <h3>Chassis Packaging</h3>
+                        <p>Mounted directly along the rear extrusion rail with clearance for the cooling fans, chassis hinge, and structural linkages.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="module-card" style="margin: 0;">
+                    <img src="../images/Projects/UGRT/enclosure-iso.jpg" alt="Standalone isometric CAD view of the rear enclosure" />
+                    <figcaption class="module-caption">
+                        <h3>Enclosure &amp; Service Lid</h3>
+                        <p>Two-piece housing with a recessed clearance notch, removable top lid, and mounting flange for easy electronics maintenance.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="module-card" style="margin: 0;">
+                    <img src="../images/Projects/UGRT/enclosure-rear-cutouts.jpg" alt="Rear pass-through cutouts and mounting holes" />
+                    <figcaption class="module-caption">
+                        <h3>Rear Pass-Through Cutouts</h3>
+                        <p>Dedicated rear openings and fastener bosses for clean wiring passthrough into the main electronics bay.</p>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="coming-soon-box">
+                <strong>Assembled Hardware Photos Coming Soon</strong>
+                <p>Photos of the fabricated enclosure installed on the UGRT rover are on the way.</p>
+            </div>
         </div>
 
         <div id="image-overlay" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
@@ -46,19 +134,17 @@
         <script src="../assets/js/jquery.min.js"></script>
         <script>
         $(document).ready(function() {
-            // When any image in the media-grid is clicked
             $('.media-grid img').css('cursor', 'zoom-in').on('click', function() {
                 var src = $(this).attr('src');
                 $('#enlarged-image').attr('src', src);
                 $('#image-overlay').css('display', 'flex');
             });
 
-            // When the overlay is clicked, hide it
             $('#image-overlay').on('click', function() {
                 $(this).hide();
             });
         });
         </script>
-        
+
     </body>
 </html>

@@ -2,6 +2,7 @@
   {
     "id": "hank-robot",
     "title": "HΛNK: Robot Assistant",
+    "date": "Spring 2026 - Present",
     "description": "Personal robot assistant with a custom knee transmission that uses dog clutches and stepper motors to jump.",
     "thumbnail": "images/hank-thumb.jpg",
     "link": "media/hank-collage.html"
@@ -9,6 +10,7 @@
   {
     "id": "ugrt-wheel-assembly",
     "title": "UGRT Rover: Wheel Assembly & Steering Redesign",
+    "date": "Fall 2026 - Present",
     "description": "Ground-up redesign of the wheel assemblies and per-wheel steering systems for UGRT's 50 kg, 6-wheel rover, designed to be lightweight while hauling a 100+ kg competition trailer.",
     "thumbnail": "images/ugrt-wheel-thumb.jpg",
     "link": "media/ugrt-wheel-collage.html",
@@ -17,6 +19,7 @@
   {
     "id": "ugrt-ui",
     "title": "UGRT Rover: Rear Control & E-Stop Enclosure",
+    "date": "Jan 2026 - Feb 2026",
     "description": "Custom-packaged rear enclosure integrated into the UGRT rover frame, housing core control electronics, emergency stop access, and modular space for a future UI panel.",
     "thumbnail": "images/ugrt-ui-thumb.jpg",
     "link": "media/ugrt-ui-collage.html"
@@ -24,6 +27,7 @@
   {
     "id": "ugrt-dexterity-panel",
     "title": "UGRT Rover: Modular Arm Dexterity Board",
+    "date": "Oct 2025 - Feb 2026",
     "description": "Modular pegboard test rig for UGRT's robotic arm, combining custom lever, dial, and crank modules with custom embedded firmware that challenges operators to hit randomized potentiometer targets on an LCD.",
     "thumbnail": "images/ugrt-dexterity-thumb.jpg",
     "link": "media/ugrt-dexterity-collage.html"
@@ -31,6 +35,7 @@
   {
     "id": "engg1100",
     "title": "Teddy Bear Wheelchair",
+    "date": "Sep 2025 - Dec 2025",
     "description": "First-year engineering design project.",
     "thumbnail": "images/teddy-thumb.jpg",
     "link": "media/teddy-collage.html"

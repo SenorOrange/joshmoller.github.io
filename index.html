@@ -37,6 +37,10 @@
 				display: inline-block; margin-top: 0.9em; padding: 0.2em 0.8em; border-radius: 20px;
 				font-size: 0.75em; font-weight: 600; background: #eef3f3; color: #5f8f8d;
 			}
+			.project-card .project-date {
+				font-size: 0.78em; font-weight: 600; color: #5f8f8d;
+				letter-spacing: 0.02em; margin: 0 0 0.65em 0;
+			}
 		</style>
 		<link rel="stylesheet" href="assets/css/sheet.css" />
 	</head>
@@ -235,7 +239,8 @@
 											${media}
 										</${tag}>
 										<header style="padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start;">
-											<h3 style="margin: 0 0 0.5em 0; font-size: 1.2em; color: #333;">${linked ? `<a href="${project.link}" style="color: inherit; border: 0;">${project.title}</a>` : project.title}</h3>
+											<h3 style="margin: 0 0 0.35em 0; font-size: 1.2em; color: #333;">${linked ? `<a href="${project.link}" style="color: inherit; border: 0;">${project.title}</a>` : project.title}</h3>
+											${project.date ? `<div class="project-date">${project.date}</div>` : ''}
 											<p style="font-size: 0.9em; margin: 0; color: #777; line-height: 1.6;">${project.description}</p>
 											${project.comingSoon ? '<div><span class="badge">Write-up in progress</span></div>' : ''}
 										</header>
